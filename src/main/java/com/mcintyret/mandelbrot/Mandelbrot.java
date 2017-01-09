@@ -10,14 +10,20 @@ public class Mandelbrot {
         double real = re;
         double imaginary = im;
 
+        double realSq = real * real;
+        double imSq = imaginary * imaginary;
+
         for (int i = 0; i < iterations; i++) {
-            double tempR = (real * real) - (imaginary * imaginary);
+            double tempR = realSq - imSq;
             double tempI = 2 * (real * imaginary);
 
             real = tempR + re;
             imaginary = tempI + im;
 
-            if ((real * real) + (imaginary * imaginary) > 4) {
+            realSq = real * real;
+            imSq = imaginary * imaginary;
+
+            if (realSq + imSq > 4.0) {
                 return i;
             }
         }
